@@ -42,16 +42,16 @@ namespace WGS84_ETRS89
 				{ sp.T_Z }
 			});
 
-			Matrix<double> EquationMatrix = RxMi.Multiply(XYZ1).Add(Tm);
-			fdo.Data_X2_Calculated = EquationMatrix[0, 0];
-			fdo.Data_Y2_Calculated = EquationMatrix[1, 0];
-			fdo.Data_Z2_Calculated = EquationMatrix[2, 0];
+			// TODO: Check if [X] and [XYZ1] matrices should switch place :)
+			// Calculation goes: [X] = [RxMi]*[XYZ1]+[Tm]
+			// Matrix<double> SolutionMatrix = RxMi.Multiply(XYZ1).Add(Tm);
+			// --------------------------------------------------------------
+			// Calculation goes: [RxMi]*[X] = [XYZ1]-[Tm]
+			Matrix<double> SolutionMatrix = RxMi.Solve(XYZ1.Subtract(Tm));
 
-			//Vector<double> resultVector = Vector<double>.Build.Random(3);
-			//Vector<double> allResults = EquationMatrix.Solve(resultVector);
-
-
-
+			fdo.Data_X2_Calculated = SolutionMatrix[0, 0];
+			fdo.Data_Y2_Calculated = SolutionMatrix[1, 0];
+			fdo.Data_Z2_Calculated = SolutionMatrix[2, 0];
 		}
 
 		#region Helpers

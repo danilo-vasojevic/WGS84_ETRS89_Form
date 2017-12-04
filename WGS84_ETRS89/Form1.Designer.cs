@@ -41,20 +41,23 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.fValueTextBox = new System.Windows.Forms.TextBox();
 			this.fileDataGrid = new System.Windows.Forms.DataGridView();
+			this.label4 = new System.Windows.Forms.Label();
+			this.label5 = new System.Windows.Forms.Label();
+			this.aValueTextBox = new System.Windows.Forms.TextBox();
+			this.label6 = new System.Windows.Forms.Label();
 			this.numberColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this._BvalueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.LvalueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.hValueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.gValueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.NvalueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.gValueCalculatedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.XvalueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.YvalueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ZvalueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.gValueCalculatedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.aValueTextBox = new System.Windows.Forms.TextBox();
-			this.label6 = new System.Windows.Forms.Label();
+			this.X2ValueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Y2ValueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Z2ValueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.fileDataGrid)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -63,7 +66,7 @@
 			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(12, 35);
+			this.label1.Location = new System.Drawing.Point(12, 107);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(52, 13);
 			this.label1.TabIndex = 0;
@@ -72,7 +75,7 @@
 			// dataFilePathTextBox
 			// 
 			this.dataFilePathTextBox.Enabled = false;
-			this.dataFilePathTextBox.Location = new System.Drawing.Point(82, 32);
+			this.dataFilePathTextBox.Location = new System.Drawing.Point(82, 104);
 			this.dataFilePathTextBox.Name = "dataFilePathTextBox";
 			this.dataFilePathTextBox.Size = new System.Drawing.Size(198, 20);
 			this.dataFilePathTextBox.TabIndex = 3;
@@ -83,7 +86,7 @@
 			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(12, 61);
+			this.label2.Location = new System.Drawing.Point(12, 36);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(67, 13);
 			this.label2.TabIndex = 2;
@@ -92,7 +95,7 @@
 			// paramsFilePathTextBox
 			// 
 			this.paramsFilePathTextBox.Enabled = false;
-			this.paramsFilePathTextBox.Location = new System.Drawing.Point(82, 58);
+			this.paramsFilePathTextBox.Location = new System.Drawing.Point(82, 33);
 			this.paramsFilePathTextBox.Name = "paramsFilePathTextBox";
 			this.paramsFilePathTextBox.Size = new System.Drawing.Size(198, 20);
 			this.paramsFilePathTextBox.TabIndex = 4;
@@ -102,7 +105,7 @@
 			// 
 			this.browseDataFileButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.browseDataFileButton.Enabled = false;
-			this.browseDataFileButton.Location = new System.Drawing.Point(284, 32);
+			this.browseDataFileButton.Location = new System.Drawing.Point(284, 104);
 			this.browseDataFileButton.Name = "browseDataFileButton";
 			this.browseDataFileButton.Size = new System.Drawing.Size(63, 21);
 			this.browseDataFileButton.TabIndex = 2;
@@ -114,7 +117,7 @@
 			// 
 			this.browseParamsFileButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.browseParamsFileButton.Enabled = false;
-			this.browseParamsFileButton.Location = new System.Drawing.Point(284, 59);
+			this.browseParamsFileButton.Location = new System.Drawing.Point(284, 34);
 			this.browseParamsFileButton.Name = "browseParamsFileButton";
 			this.browseParamsFileButton.Size = new System.Drawing.Size(63, 20);
 			this.browseParamsFileButton.TabIndex = 5;
@@ -126,7 +129,7 @@
 			// 
 			this.loadParamsButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.loadParamsButton.Enabled = false;
-			this.loadParamsButton.Location = new System.Drawing.Point(348, 59);
+			this.loadParamsButton.Location = new System.Drawing.Point(348, 34);
 			this.loadParamsButton.Name = "loadParamsButton";
 			this.loadParamsButton.Size = new System.Drawing.Size(94, 20);
 			this.loadParamsButton.TabIndex = 6;
@@ -138,7 +141,7 @@
 			// 
 			this.loadDataButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.loadDataButton.Enabled = false;
-			this.loadDataButton.Location = new System.Drawing.Point(348, 32);
+			this.loadDataButton.Location = new System.Drawing.Point(348, 104);
 			this.loadDataButton.Name = "loadDataButton";
 			this.loadDataButton.Size = new System.Drawing.Size(94, 21);
 			this.loadDataButton.TabIndex = 3;
@@ -148,7 +151,7 @@
 			// 
 			// sevenParamsTextBox
 			// 
-			this.sevenParamsTextBox.Location = new System.Drawing.Point(15, 108);
+			this.sevenParamsTextBox.Location = new System.Drawing.Point(15, 72);
 			this.sevenParamsTextBox.Name = "sevenParamsTextBox";
 			this.sevenParamsTextBox.ReadOnly = true;
 			this.sevenParamsTextBox.Size = new System.Drawing.Size(427, 20);
@@ -183,16 +186,54 @@
             this.hValueColumn,
             this.gValueColumn,
             this.NvalueColumn,
+            this.gValueCalculatedColumn,
             this.XvalueColumn,
             this.YvalueColumn,
             this.ZvalueColumn,
-            this.gValueCalculatedColumn});
+            this.X2ValueColumn,
+            this.Y2ValueColumn,
+            this.Z2ValueColumn});
 			this.fileDataGrid.GridColor = System.Drawing.SystemColors.ControlLight;
-			this.fileDataGrid.Location = new System.Drawing.Point(15, 155);
+			this.fileDataGrid.Location = new System.Drawing.Point(15, 143);
 			this.fileDataGrid.Name = "fileDataGrid";
 			this.fileDataGrid.ReadOnly = true;
 			this.fileDataGrid.Size = new System.Drawing.Size(427, 235);
 			this.fileDataGrid.TabIndex = 11;
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(12, 127);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(143, 13);
+			this.label4.TabIndex = 12;
+			this.label4.Text = "Loaded and calculated data:";
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(12, 56);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(101, 13);
+			this.label5.TabIndex = 13;
+			this.label5.Text = "Loaded parameters:";
+			// 
+			// aValueTextBox
+			// 
+			this.aValueTextBox.Location = new System.Drawing.Point(219, 6);
+			this.aValueTextBox.Name = "aValueTextBox";
+			this.aValueTextBox.Size = new System.Drawing.Size(61, 20);
+			this.aValueTextBox.TabIndex = 2;
+			this.aValueTextBox.TextChanged += new System.EventHandler(this.aValueTextBox_TextChanged);
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(149, 9);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(55, 13);
+			this.label6.TabIndex = 14;
+			this.label6.Text = "\"a\" value:";
 			// 
 			// numberColumn
 			// 
@@ -254,6 +295,14 @@
 			this.NvalueColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
 			this.NvalueColumn.Width = 120;
 			// 
+			// gValueCalculatedColumn
+			// 
+			this.gValueCalculatedColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+			this.gValueCalculatedColumn.DataPropertyName = "Data_g_Calculated";
+			this.gValueCalculatedColumn.HeaderText = "g (Calculated)";
+			this.gValueCalculatedColumn.Name = "gValueCalculatedColumn";
+			this.gValueCalculatedColumn.ReadOnly = true;
+			// 
 			// XvalueColumn
 			// 
 			this.XvalueColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -281,54 +330,35 @@
 			this.ZvalueColumn.ReadOnly = true;
 			this.ZvalueColumn.Width = 120;
 			// 
-			// gValueCalculatedColumn
+			// X2ValueColumn
 			// 
-			this.gValueCalculatedColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-			this.gValueCalculatedColumn.DataPropertyName = "Data_g_Calculated";
-			this.gValueCalculatedColumn.HeaderText = "g (Calculated)";
-			this.gValueCalculatedColumn.Name = "gValueCalculatedColumn";
-			this.gValueCalculatedColumn.ReadOnly = true;
+			this.X2ValueColumn.DataPropertyName = "Data_X2_Calculated";
+			this.X2ValueColumn.HeaderText = "X2 (Calculated)";
+			this.X2ValueColumn.Name = "X2ValueColumn";
+			this.X2ValueColumn.ReadOnly = true;
+			this.X2ValueColumn.Width = 120;
 			// 
-			// label4
+			// Y2ValueColumn
 			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(12, 139);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(143, 13);
-			this.label4.TabIndex = 12;
-			this.label4.Text = "Loaded and calculated data:";
+			this.Y2ValueColumn.DataPropertyName = "Data_Y2_Calculated";
+			this.Y2ValueColumn.HeaderText = "Y2 (Calculated)";
+			this.Y2ValueColumn.Name = "Y2ValueColumn";
+			this.Y2ValueColumn.ReadOnly = true;
+			this.Y2ValueColumn.Width = 120;
 			// 
-			// label5
+			// Z2ValueColumn
 			// 
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(12, 92);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(101, 13);
-			this.label5.TabIndex = 13;
-			this.label5.Text = "Loaded parameters:";
-			// 
-			// aValueTextBox
-			// 
-			this.aValueTextBox.Location = new System.Drawing.Point(219, 6);
-			this.aValueTextBox.Name = "aValueTextBox";
-			this.aValueTextBox.Size = new System.Drawing.Size(61, 20);
-			this.aValueTextBox.TabIndex = 2;
-			this.aValueTextBox.TextChanged += new System.EventHandler(this.aValueTextBox_TextChanged);
-			// 
-			// label6
-			// 
-			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(149, 9);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(55, 13);
-			this.label6.TabIndex = 14;
-			this.label6.Text = "\"a\" value:";
+			this.Z2ValueColumn.DataPropertyName = "Data_Z2_Calculated";
+			this.Z2ValueColumn.HeaderText = "Z2 (Calculated)";
+			this.Z2ValueColumn.Name = "Z2ValueColumn";
+			this.Z2ValueColumn.ReadOnly = true;
+			this.Z2ValueColumn.Width = 120;
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(463, 471);
+			this.ClientSize = new System.Drawing.Size(463, 405);
 			this.Controls.Add(this.aValueTextBox);
 			this.Controls.Add(this.label6);
 			this.Controls.Add(this.label5);
@@ -379,10 +409,13 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn hValueColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn gValueColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn NvalueColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn gValueCalculatedColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn XvalueColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn YvalueColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ZvalueColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn gValueCalculatedColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn X2ValueColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Y2ValueColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Z2ValueColumn;
 	}
 }
 

@@ -8,6 +8,7 @@ namespace WGS84_ETRS89
 {
 	public partial class Form1 : Form
 	{
+		bool paramsLoaded = false;
 		public TranslationObject TranslationObject { get; set; }
 		public Form1()
 		{
@@ -19,11 +20,13 @@ namespace WGS84_ETRS89
 
 		private void browseDataFileButton_Click(object sender, EventArgs e)
 		{
+			openFileDialog.Filter = "DATA files(*.dat)|*.dat";
 			if (openFileDialog.ShowDialog() == DialogResult.OK)
 				dataFilePathTextBox.Text = openFileDialog.FileName;
 		}
 		private void browseParamsFileButton_Click(object sender, EventArgs e)
 		{
+			openFileDialog.Filter = "PAR files(*.PAR)|*.PAR";
 			if (openFileDialog.ShowDialog() == DialogResult.OK)
 				paramsFilePathTextBox.Text = openFileDialog.FileName;
 		}
@@ -53,6 +56,8 @@ namespace WGS84_ETRS89
 			if (TranslationObject == null) TranslationObject = new TranslationObject(f, a, paramsFilePathTextBox.Text, false, null);
 			else TranslationObject.LoadSevenParameters(paramsFilePathTextBox.Text);
 			sevenParamsTextBox.Text = TranslationObject.SevenParameters.ToString();
+			paramsLoaded = true;
+			loadDataButton.Enabled = true;
 		}
 
 		private void fValueTextBox_TextChanged(object sender, EventArgs e)
@@ -95,7 +100,7 @@ namespace WGS84_ETRS89
 		}
 		private void dataFilePathTextBox_TextChanged(object sender, EventArgs e)
 		{
-			if (File.Exists(dataFilePathTextBox.Text)) loadDataButton.Enabled = true;
+			if (File.Exists(dataFilePathTextBox.Text) && paramsLoaded) loadDataButton.Enabled = true;
 			else loadDataButton.Enabled = false;
 		}
 		private void paramsFilePathTextBox_TextChanged(object sender, EventArgs e)

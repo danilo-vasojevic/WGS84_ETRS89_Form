@@ -42,8 +42,7 @@ namespace WGS84_ETRS89
 				item.Data_Z_Calculated = Calc_Z_NabhB(item.Data_N_Calculated, Data_abRatio, item.Data_h, item.Data_B);
 
 				item.Data_g_Calculated = Calc_g_g(item.Data_g);
-
-				// TODO: Add calculation for X2, Y2 and Z2 here.
+				
 				Calc_X2_Y2_Z2(item, SevenParameters);
 
 				bs.Add(item);
