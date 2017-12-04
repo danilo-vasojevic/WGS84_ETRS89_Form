@@ -41,10 +41,6 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.fValueTextBox = new System.Windows.Forms.TextBox();
 			this.fileDataGrid = new System.Windows.Forms.DataGridView();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.aValueTextBox = new System.Windows.Forms.TextBox();
-			this.label6 = new System.Windows.Forms.Label();
 			this.numberColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this._BvalueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.LvalueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +54,10 @@
 			this.X2ValueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Y2ValueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Z2ValueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.label4 = new System.Windows.Forms.Label();
+			this.label5 = new System.Windows.Forms.Label();
+			this.aValueTextBox = new System.Windows.Forms.TextBox();
+			this.label6 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.fileDataGrid)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -78,7 +78,7 @@
 			this.dataFilePathTextBox.Location = new System.Drawing.Point(82, 104);
 			this.dataFilePathTextBox.Name = "dataFilePathTextBox";
 			this.dataFilePathTextBox.Size = new System.Drawing.Size(198, 20);
-			this.dataFilePathTextBox.TabIndex = 3;
+			this.dataFilePathTextBox.TabIndex = 8;
 			this.dataFilePathTextBox.TextChanged += new System.EventHandler(this.dataFilePathTextBox_TextChanged);
 			// 
 			// label2
@@ -98,7 +98,7 @@
 			this.paramsFilePathTextBox.Location = new System.Drawing.Point(82, 33);
 			this.paramsFilePathTextBox.Name = "paramsFilePathTextBox";
 			this.paramsFilePathTextBox.Size = new System.Drawing.Size(198, 20);
-			this.paramsFilePathTextBox.TabIndex = 4;
+			this.paramsFilePathTextBox.TabIndex = 7;
 			this.paramsFilePathTextBox.TextChanged += new System.EventHandler(this.paramsFilePathTextBox_TextChanged);
 			// 
 			// browseDataFileButton
@@ -108,7 +108,7 @@
 			this.browseDataFileButton.Location = new System.Drawing.Point(284, 104);
 			this.browseDataFileButton.Name = "browseDataFileButton";
 			this.browseDataFileButton.Size = new System.Drawing.Size(63, 21);
-			this.browseDataFileButton.TabIndex = 2;
+			this.browseDataFileButton.TabIndex = 5;
 			this.browseDataFileButton.Text = "Browse";
 			this.browseDataFileButton.UseVisualStyleBackColor = true;
 			this.browseDataFileButton.Click += new System.EventHandler(this.browseDataFileButton_Click);
@@ -120,7 +120,7 @@
 			this.browseParamsFileButton.Location = new System.Drawing.Point(284, 34);
 			this.browseParamsFileButton.Name = "browseParamsFileButton";
 			this.browseParamsFileButton.Size = new System.Drawing.Size(63, 20);
-			this.browseParamsFileButton.TabIndex = 5;
+			this.browseParamsFileButton.TabIndex = 3;
 			this.browseParamsFileButton.Text = "Browse";
 			this.browseParamsFileButton.UseVisualStyleBackColor = true;
 			this.browseParamsFileButton.Click += new System.EventHandler(this.browseParamsFileButton_Click);
@@ -132,7 +132,7 @@
 			this.loadParamsButton.Location = new System.Drawing.Point(348, 34);
 			this.loadParamsButton.Name = "loadParamsButton";
 			this.loadParamsButton.Size = new System.Drawing.Size(94, 20);
-			this.loadParamsButton.TabIndex = 6;
+			this.loadParamsButton.TabIndex = 4;
 			this.loadParamsButton.Text = "Load Params";
 			this.loadParamsButton.UseVisualStyleBackColor = true;
 			this.loadParamsButton.Click += new System.EventHandler(this.loadParamsButton_Click_1);
@@ -144,7 +144,7 @@
 			this.loadDataButton.Location = new System.Drawing.Point(348, 104);
 			this.loadDataButton.Name = "loadDataButton";
 			this.loadDataButton.Size = new System.Drawing.Size(94, 21);
-			this.loadDataButton.TabIndex = 3;
+			this.loadDataButton.TabIndex = 6;
 			this.loadDataButton.Text = "Load/Calc Data";
 			this.loadDataButton.UseVisualStyleBackColor = true;
 			this.loadDataButton.Click += new System.EventHandler(this.loadDataButton_Click_1);
@@ -199,41 +199,6 @@
 			this.fileDataGrid.ReadOnly = true;
 			this.fileDataGrid.Size = new System.Drawing.Size(427, 235);
 			this.fileDataGrid.TabIndex = 11;
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(12, 127);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(143, 13);
-			this.label4.TabIndex = 12;
-			this.label4.Text = "Loaded and calculated data:";
-			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(12, 56);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(101, 13);
-			this.label5.TabIndex = 13;
-			this.label5.Text = "Loaded parameters:";
-			// 
-			// aValueTextBox
-			// 
-			this.aValueTextBox.Location = new System.Drawing.Point(219, 6);
-			this.aValueTextBox.Name = "aValueTextBox";
-			this.aValueTextBox.Size = new System.Drawing.Size(61, 20);
-			this.aValueTextBox.TabIndex = 2;
-			this.aValueTextBox.TextChanged += new System.EventHandler(this.aValueTextBox_TextChanged);
-			// 
-			// label6
-			// 
-			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(149, 9);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(55, 13);
-			this.label6.TabIndex = 14;
-			this.label6.Text = "\"a\" value:";
 			// 
 			// numberColumn
 			// 
@@ -353,6 +318,41 @@
 			this.Z2ValueColumn.Name = "Z2ValueColumn";
 			this.Z2ValueColumn.ReadOnly = true;
 			this.Z2ValueColumn.Width = 120;
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(12, 127);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(143, 13);
+			this.label4.TabIndex = 12;
+			this.label4.Text = "Loaded and calculated data:";
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(12, 56);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(101, 13);
+			this.label5.TabIndex = 13;
+			this.label5.Text = "Loaded parameters:";
+			// 
+			// aValueTextBox
+			// 
+			this.aValueTextBox.Location = new System.Drawing.Point(219, 6);
+			this.aValueTextBox.Name = "aValueTextBox";
+			this.aValueTextBox.Size = new System.Drawing.Size(61, 20);
+			this.aValueTextBox.TabIndex = 2;
+			this.aValueTextBox.TextChanged += new System.EventHandler(this.aValueTextBox_TextChanged);
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(149, 9);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(55, 13);
+			this.label6.TabIndex = 14;
+			this.label6.Text = "\"a\" value:";
 			// 
 			// Form1
 			// 

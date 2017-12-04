@@ -57,7 +57,7 @@ namespace WGS84_ETRS89
 			else TranslationObject.LoadSevenParameters(paramsFilePathTextBox.Text);
 			sevenParamsTextBox.Text = TranslationObject.SevenParameters.ToString();
 			paramsLoaded = true;
-			loadDataButton.Enabled = true;
+			if(File.Exists(dataFilePathTextBox.Text)) loadDataButton.Enabled = true;
 		}
 
 		private void fValueTextBox_TextChanged(object sender, EventArgs e)

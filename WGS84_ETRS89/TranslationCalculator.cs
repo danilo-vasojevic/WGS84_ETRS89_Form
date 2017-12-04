@@ -42,12 +42,7 @@ namespace WGS84_ETRS89
 				{ sp.T_Z }
 			});
 
-			// TODO: Check if [X] and [XYZ1] matrices should switch place :)
-			// Calculation goes: [X] = [RxMi]*[XYZ1]+[Tm]
-			// Matrix<double> SolutionMatrix = RxMi.Multiply(XYZ1).Add(Tm);
-			// --------------------------------------------------------------
-			// Calculation goes: [RxMi]*[X] = [XYZ1]-[Tm]
-			Matrix<double> SolutionMatrix = RxMi.Solve(XYZ1.Subtract(Tm));
+			Matrix<double> SolutionMatrix = RxMi.Multiply((1 + sp.Mi)).Multiply(XYZ1).Add(Tm);
 
 			fdo.Data_X2_Calculated = SolutionMatrix[0, 0];
 			fdo.Data_Y2_Calculated = SolutionMatrix[1, 0];
@@ -63,7 +58,7 @@ namespace WGS84_ETRS89
 		{
 			var C = Cos(value);
 			var S = Sin(value);
-			var s = 0 - S; // Negative Sin(Value)
+			var s = (-1) * S;
 			return DenseMatrix.OfArray(new double[,]
 			{
 				{ 1, 0, 0},
@@ -75,7 +70,7 @@ namespace WGS84_ETRS89
 		{
 			var C = Cos(value);
 			var S = Sin(value);
-			var s = 0 - S; // Negative Sin(Value)
+			var s = (-1) * S;
 			return DenseMatrix.OfArray(new double[,]
 			{
 				{ C, 0, s},
@@ -87,7 +82,7 @@ namespace WGS84_ETRS89
 		{
 			var C = Cos(value);
 			var S = Sin(value);
-			var s = 0 - S; // Negative Sin(Value)
+			var s = (-1) * S;
 			return DenseMatrix.OfArray(new double[,]
 			{
 				{ C, S, 0},
