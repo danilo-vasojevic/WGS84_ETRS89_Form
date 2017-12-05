@@ -9,6 +9,7 @@ namespace WGS84_ETRS89
 	public partial class Form1 : Form
 	{
 		bool paramsLoaded = false;
+		bool dataLoaded = false;
 		public TranslationObject TranslationObject { get; set; }
 		public Form1()
 		{
@@ -43,11 +44,14 @@ namespace WGS84_ETRS89
 			{
 				TranslationObject.Data_a = a;
 				TranslationObject.Data_f = f;
-				TranslationObject.LoadDataFile(dataFilePathTextBox.Text, bs);
+				TranslationObject.LoadDataFileAndCalculate(dataFilePathTextBox.Text, bs);
 			}
 			fileDataGrid.DataSource = bs;
 			this.Text = currTitle;
-			Enabled = true;
+			dataLoaded = true;
+			exportToFileDirectoryTextBox.Enabled = true;
+			browseExportFolder.Enabled = true;
+			Enabled = true; // Whole form
 		}
 		private void loadParamsButton_Click_1(object sender, EventArgs e)
 		{
@@ -57,45 +61,30 @@ namespace WGS84_ETRS89
 			else TranslationObject.LoadSevenParameters(paramsFilePathTextBox.Text);
 			sevenParamsTextBox.Text = TranslationObject.SevenParameters.ToString();
 			paramsLoaded = true;
-			if(File.Exists(dataFilePathTextBox.Text)) loadDataButton.Enabled = true;
+			if (File.Exists(dataFilePathTextBox.Text)) loadDataButton.Enabled = true;
 		}
 
 		private void fValueTextBox_TextChanged(object sender, EventArgs e)
 		{
 			dataFilePathTextBox_TextChanged(sender, e);
 			paramsFilePathTextBox_TextChanged(sender, e);
-			if (fValueTextBox.Text != String.Empty && aValueTextBox.Text != String.Empty)
-			{
-				dataFilePathTextBox.Enabled = true;
-				paramsFilePathTextBox.Enabled = true;
-				browseDataFileButton.Enabled = true;
-				browseParamsFileButton.Enabled = true;
-			}
+			if (fValueTextBox.Text != String.Empty && aValueTextBox.Text != String.Empty) EnableLoadButtons();
 			else if (fValueTextBox.Text == String.Empty || aValueTextBox.Text == String.Empty)
 			{
-				dataFilePathTextBox.Enabled = false;
-				paramsFilePathTextBox.Enabled = false;
-				browseDataFileButton.Enabled = false;
-				browseParamsFileButton.Enabled = false;
+				DisableLoadAndExportButtons();
+				DataAndParamsUnloaded();
 			}
 		}
+
 		private void aValueTextBox_TextChanged(object sender, EventArgs e)
 		{
 			dataFilePathTextBox_TextChanged(sender, e);
 			paramsFilePathTextBox_TextChanged(sender, e);
-			if (fValueTextBox.Text != String.Empty && aValueTextBox.Text != String.Empty)
-			{
-				dataFilePathTextBox.Enabled = true;
-				paramsFilePathTextBox.Enabled = true;
-				browseDataFileButton.Enabled = true;
-				browseParamsFileButton.Enabled = true;
-			}
+			if (fValueTextBox.Text != String.Empty && aValueTextBox.Text != String.Empty) EnableLoadButtons();
 			else if (fValueTextBox.Text == String.Empty || aValueTextBox.Text == String.Empty)
 			{
-				dataFilePathTextBox.Enabled = false;
-				paramsFilePathTextBox.Enabled = false;
-				browseDataFileButton.Enabled = false;
-				browseParamsFileButton.Enabled = false;
+				DisableLoadAndExportButtons();
+				DataAndParamsUnloaded();
 			}
 		}
 		private void dataFilePathTextBox_TextChanged(object sender, EventArgs e)
@@ -107,6 +96,48 @@ namespace WGS84_ETRS89
 		{
 			if (File.Exists(paramsFilePathTextBox.Text)) loadParamsButton.Enabled = true;
 			else loadParamsButton.Enabled = false;
+		}
+
+		private void exportToFileDirectoryTextBox_TextChanged(object sender, EventArgs e)
+		{
+			if (Directory.Exists(exportToFileDirectoryTextBox.Text) && dataLoaded)
+				exportToFileButton.Enabled = true;
+			else exportToFileButton.Enabled = false;
+		}
+
+		private void browseExportFolder_Click(object sender, EventArgs e)
+		{
+			if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+				exportToFileDirectoryTextBox.Text = folderBrowserDialog.SelectedPath;
+		}
+
+		private void EnableLoadButtons()
+		{
+			dataFilePathTextBox.Enabled = true;
+			paramsFilePathTextBox.Enabled = true;
+			browseDataFileButton.Enabled = true;
+			browseParamsFileButton.Enabled = true;
+		}
+
+		private void DisableLoadAndExportButtons()
+		{
+			dataFilePathTextBox.Enabled = false;
+			paramsFilePathTextBox.Enabled = false;
+			browseDataFileButton.Enabled = false;
+			browseParamsFileButton.Enabled = false;
+			loadDataButton.Enabled = false;
+			loadParamsButton.Enabled = false;
+		}
+
+		private void DataAndParamsUnloaded() {
+			dataLoaded = false;
+			paramsLoaded = false;
+			exportToFileDirectoryTextBox_TextChanged(null, null);
+		}
+
+		private void exportToFileButton_Click(object sender, EventArgs e)
+		{
+			TranslationObject.ExportDataToFile(exportToFileDirectoryTextBox.Text);
 		}
 	}
 }

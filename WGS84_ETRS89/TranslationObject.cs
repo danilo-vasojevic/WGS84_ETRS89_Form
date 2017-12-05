@@ -1,4 +1,5 @@
 ﻿using FileHelpers;
+using System.IO;
 using System.Windows.Forms;
 using static WGS84_ETRS89.TranslationCalculator;
 
@@ -18,7 +19,7 @@ namespace WGS84_ETRS89
 		{
 			Data_a = a;
 			CalculateInitialValues(f);
-			if (isDataPath) LoadDataFile(filePath, bs);
+			if (isDataPath) LoadDataFileAndCalculate(filePath, bs);
 			else LoadSevenParameters(filePath);
 		}
 		
@@ -29,7 +30,7 @@ namespace WGS84_ETRS89
 			Data_abRatio = Calc_ab_ratio(Data_e);
 		}
 
-		public void LoadDataFile(string dataFilePath, BindingSource bs)
+		public void LoadDataFileAndCalculate(string dataFilePath, BindingSource bs)
 		{
 			FileDataObjectList = (new FileHelperEngine<FileDataObject>()).ReadFile(dataFilePath);
 			CalculateInitialValues(Data_f);
@@ -54,6 +55,21 @@ namespace WGS84_ETRS89
 			SevenParameters = new SevenParameters(paramsFilePath);
 		}
 
-		
+		public void ExportDataToFile(string DirectoryName)
+		{
+			StreamWriter sw = new StreamWriter(DirectoryName + "\\WGS84_ETRS89.txt");
+			foreach (var item in FileDataObjectList)
+			{
+				// Write lines, rewriting old file if it exists.
+				sw.WriteLine(
+					item.Data_Order_Num + " " +
+					item.Data_X2_Calculated + " " +
+					item.Data_Y2_Calculated + " " +
+					item.Data_Z2_Calculated + " " +
+					item.Data_g_Calculated);
+			}
+			sw.Dispose();
+			sw.Close();
+		}
 	}
 }

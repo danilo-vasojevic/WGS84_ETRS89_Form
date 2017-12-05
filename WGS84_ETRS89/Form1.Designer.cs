@@ -58,6 +58,11 @@
 			this.label5 = new System.Windows.Forms.Label();
 			this.aValueTextBox = new System.Windows.Forms.TextBox();
 			this.label6 = new System.Windows.Forms.Label();
+			this.exportToFileButton = new System.Windows.Forms.Button();
+			this.exportToFileDirectoryTextBox = new System.Windows.Forms.TextBox();
+			this.label7 = new System.Windows.Forms.Label();
+			this.browseExportFolder = new System.Windows.Forms.Button();
+			this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
 			((System.ComponentModel.ISupportInitialize)(this.fileDataGrid)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -354,11 +359,57 @@
 			this.label6.TabIndex = 14;
 			this.label6.Text = "\"a\" value:";
 			// 
+			// exportToFileButton
+			// 
+			this.exportToFileButton.Enabled = false;
+			this.exportToFileButton.Location = new System.Drawing.Point(355, 407);
+			this.exportToFileButton.Name = "exportToFileButton";
+			this.exportToFileButton.Size = new System.Drawing.Size(87, 20);
+			this.exportToFileButton.TabIndex = 15;
+			this.exportToFileButton.Text = "Export!";
+			this.exportToFileButton.UseMnemonic = false;
+			this.exportToFileButton.UseVisualStyleBackColor = true;
+			this.exportToFileButton.Click += new System.EventHandler(this.exportToFileButton_Click);
+			// 
+			// exportToFileDirectoryTextBox
+			// 
+			this.exportToFileDirectoryTextBox.Enabled = false;
+			this.exportToFileDirectoryTextBox.Location = new System.Drawing.Point(15, 407);
+			this.exportToFileDirectoryTextBox.Name = "exportToFileDirectoryTextBox";
+			this.exportToFileDirectoryTextBox.Size = new System.Drawing.Size(265, 20);
+			this.exportToFileDirectoryTextBox.TabIndex = 16;
+			this.exportToFileDirectoryTextBox.TextChanged += new System.EventHandler(this.exportToFileDirectoryTextBox_TextChanged);
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Location = new System.Drawing.Point(12, 391);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(83, 13);
+			this.label7.TabIndex = 17;
+			this.label7.Text = "Export directory:";
+			// 
+			// browseExportFolder
+			// 
+			this.browseExportFolder.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.browseExportFolder.Enabled = false;
+			this.browseExportFolder.Location = new System.Drawing.Point(286, 407);
+			this.browseExportFolder.Name = "browseExportFolder";
+			this.browseExportFolder.Size = new System.Drawing.Size(63, 21);
+			this.browseExportFolder.TabIndex = 18;
+			this.browseExportFolder.Text = "Browse";
+			this.browseExportFolder.UseVisualStyleBackColor = true;
+			this.browseExportFolder.Click += new System.EventHandler(this.browseExportFolder_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(463, 405);
+			this.ClientSize = new System.Drawing.Size(463, 439);
+			this.Controls.Add(this.browseExportFolder);
+			this.Controls.Add(this.label7);
+			this.Controls.Add(this.exportToFileDirectoryTextBox);
+			this.Controls.Add(this.exportToFileButton);
 			this.Controls.Add(this.aValueTextBox);
 			this.Controls.Add(this.label6);
 			this.Controls.Add(this.label5);
@@ -416,6 +467,11 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn X2ValueColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Y2ValueColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Z2ValueColumn;
+		private System.Windows.Forms.Button exportToFileButton;
+		private System.Windows.Forms.TextBox exportToFileDirectoryTextBox;
+		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.Button browseExportFolder;
+		private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
 	}
 }
 
