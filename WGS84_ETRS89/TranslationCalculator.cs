@@ -1,15 +1,20 @@
 ﻿using static System.Math;
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
+using NUnit.Framework;
 
 namespace WGS84_ETRS89
 {
 	public static class TranslationCalculator
 	{
 		// Calculates e value, based on f
-		public static double Calc_e(double f) => (2 * f - Square(f));
+		[TestCase(1, ExpectedResult = 1)]
+		[TestCase(2, ExpectedResult = 0)]
+		public static double Calc_e(double f) => Sqrt(2 * f - Square(f));
 
 		// Calculates (a*a)/(b*b) ratio based on e value
+		[TestCase(1, ExpectedResult = 0)]
+		[TestCase(4, ExpectedResult = -15)]
 		public static double Calc_ab_ratio(double e) => (1 - Square(e));
 
 		// Calculates N value based on a, B, e values

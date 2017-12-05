@@ -26,7 +26,7 @@ namespace WGS84_ETRS89
 		{
 			Data_f = f;
 			Data_e = Calc_e(f);
-			Data_abRatio = Calc_ab_ratio(f);
+			Data_abRatio = Calc_ab_ratio(Data_e);
 		}
 
 		public void LoadDataFile(string dataFilePath, BindingSource bs)
