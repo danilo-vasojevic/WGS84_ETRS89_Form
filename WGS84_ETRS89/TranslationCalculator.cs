@@ -1,33 +1,28 @@
 ﻿using static System.Math;
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
-using NUnit.Framework;
 
 namespace WGS84_ETRS89
 {
 	public static class TranslationCalculator
 	{
 		// Calculates e value, based on f
-		[TestCase(1, ExpectedResult = 1)]
-		[TestCase(2, ExpectedResult = 0)]
 		public static double Calc_e(double f) => Sqrt(2 * f - Square(f));
 
 		// Calculates (a*a)/(b*b) ratio based on e value
-		[TestCase(1, ExpectedResult = 0)]
-		[TestCase(4, ExpectedResult = -15)]
 		public static double Calc_ab_ratio(double e) => (1 - Square(e));
 
 		// Calculates N value based on a, B, e values
-		public static double Calc_N_aBe(double a, double B, double e) => a / (Sqrt(1 - (Square(e) * Square(Sin(B)))));
+		public static double Calc_N_aBe(double a, double B_deg, double e) => a / (Sqrt(1 - (Square(e) * Square(Sin(Radians(B_deg))))));
 
 		// Calculate X value based on N, h, B and l values
-		public static double Calc_X_NhBL(double N, double h, double B, double l) => ((N + h) * Cos(B) * Cos(l));
+		public static double Calc_X_NhBL(double N, double h, double B_deg, double l_deg) => ((N + h) * Cos(Radians(B_deg)) * Cos(Radians(l_deg)));
 
 		// Calculate Y value based on N, h, B and l values
-		public static double Calc_Y_NhBL(double N, double h, double B, double l) => ((N + h) * Cos(B) * Sin(l));
+		public static double Calc_Y_NhBL(double N, double h, double B_deg, double l_deg) => ((N + h) * Cos(Radians(B_deg)) * Sin(Radians(l_deg)));
 
 		// Calculate Z value based on N, a2b2 ratio, h, and B values
-		public static double Calc_Z_NabhB(double N, double r, double h, double B) => ((N * r + h) * Sin(B));
+		public static double Calc_Z_NabhB(double N, double r, double h, double B_deg) => ((N * r + h) * Sin(Radians(B_deg)));
 
 		// Calcualte g based on g value
 		public static double Calc_g_g(double g) => 980592.54 + 1.001427 * (g - 980607.66);
@@ -47,7 +42,7 @@ namespace WGS84_ETRS89
 				{ sp.T_Z }
 			});
 
-			Matrix<double> SolutionMatrix = RxMi.Multiply((1 + sp.Mi)).Multiply(XYZ1).Add(Tm);
+			Matrix<double> SolutionMatrix = RxMi.Multiply(XYZ1).Add(Tm);
 
 			fdo.Data_X2_Calculated = SolutionMatrix[0, 0];
 			fdo.Data_Y2_Calculated = SolutionMatrix[1, 0];
@@ -57,8 +52,6 @@ namespace WGS84_ETRS89
 		#region Helpers
 		private static double Square(double a) => Pow(a, 2);
 		private static double Radians(double angleInDegrees) => PI * angleInDegrees / 180.0;
-		private static double Degrees(double angleInRadians) => angleInRadians * (180.0 / PI);
-
 		private static Matrix<double> R1(double value)
 		{
 			var C = Cos(value);
@@ -95,11 +88,11 @@ namespace WGS84_ETRS89
 				{ 0, 0, 1}
 			});
 		}
-
-		private static Matrix<double> get_RxMi(double Ex, double Ey, double Ez, double Mi) => R1(Ex)
+		private static Matrix<double> get_RxMi(double Ex, double Ey, double Ez, double Mi) => 
+			R1(Ex)
 				.Multiply(R2(Ey))
 				.Multiply(R3(Ez))
-				.Multiply(Mi);
+				.Multiply(1+Mi);
 		#endregion
 	}
 }

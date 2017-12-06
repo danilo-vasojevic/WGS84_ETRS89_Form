@@ -36,11 +36,11 @@ namespace WGS84_ETRS89
 			CalculateInitialValues(Data_f);
 			foreach (var item in FileDataObjectList)
 			{
-				item.Data_N_Calculated = Calc_N_aBe(Data_a, RadiansFrom(item.Data_B), Data_e);
+				item.Data_N_Calculated = Calc_N_aBe(Data_a, item.Data_B, Data_e);
 
-				item.Data_X_Calculated = Calc_X_NhBL(item.Data_N_Calculated, item.Data_h, RadiansFrom(item.Data_B), RadiansFrom(item.Data_L));
-				item.Data_Y_Calculated = Calc_Y_NhBL(item.Data_N_Calculated, item.Data_h, RadiansFrom(item.Data_B), RadiansFrom(item.Data_L));
-				item.Data_Z_Calculated = Calc_Z_NabhB(item.Data_N_Calculated, Data_abRatio, item.Data_h, RadiansFrom(item.Data_B));
+				item.Data_X_Calculated = Calc_X_NhBL(item.Data_N_Calculated, item.Data_h, item.Data_B, item.Data_L);
+				item.Data_Y_Calculated = Calc_Y_NhBL(item.Data_N_Calculated, item.Data_h, item.Data_B, item.Data_L);
+				item.Data_Z_Calculated = Calc_Z_NabhB(item.Data_N_Calculated, Data_abRatio, item.Data_h, item.Data_B);
 
 				item.Data_g_Calculated = Calc_g_g(item.Data_g);
 				
@@ -50,8 +50,6 @@ namespace WGS84_ETRS89
 			}
 		}
 
-		private double RadiansFrom(double degrees) => degrees * System.Math.PI / 180.0;
-
 		public void LoadSevenParameters(string paramsFilePath)
 		{
 			SevenParameters = new SevenParameters(paramsFilePath);
@@ -59,7 +57,7 @@ namespace WGS84_ETRS89
 
 		public void ExportDataToFile(string DirectoryName)
 		{
-			StreamWriter sw = new StreamWriter(DirectoryName + "\\WGS84_ETRS89.txt");
+			StreamWriter sw = new StreamWriter(DirectoryName + "\\" + ConfigManager.ExportFileName);
 			foreach (var item in FileDataObjectList)
 			{
 				// Write lines, rewriting old file if it exists.

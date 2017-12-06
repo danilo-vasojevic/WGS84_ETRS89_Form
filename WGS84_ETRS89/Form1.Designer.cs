@@ -175,7 +175,7 @@
 			// 
 			this.fValueTextBox.Location = new System.Drawing.Point(82, 6);
 			this.fValueTextBox.Name = "fValueTextBox";
-			this.fValueTextBox.Size = new System.Drawing.Size(61, 20);
+			this.fValueTextBox.Size = new System.Drawing.Size(126, 20);
 			this.fValueTextBox.TabIndex = 1;
 			this.fValueTextBox.TextChanged += new System.EventHandler(this.fValueTextBox_TextChanged);
 			// 
@@ -225,16 +225,16 @@
 			// 
 			// aValueTextBox
 			// 
-			this.aValueTextBox.Location = new System.Drawing.Point(219, 6);
+			this.aValueTextBox.Location = new System.Drawing.Point(284, 6);
 			this.aValueTextBox.Name = "aValueTextBox";
-			this.aValueTextBox.Size = new System.Drawing.Size(61, 20);
+			this.aValueTextBox.Size = new System.Drawing.Size(65, 20);
 			this.aValueTextBox.TabIndex = 2;
 			this.aValueTextBox.TextChanged += new System.EventHandler(this.aValueTextBox_TextChanged);
 			// 
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(149, 9);
+			this.label6.Location = new System.Drawing.Point(223, 9);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(55, 13);
 			this.label6.TabIndex = 14;
@@ -429,6 +429,7 @@
 			this.MaximizeBox = false;
 			this.Name = "Form1";
 			this.Text = "WG84_ETRS89";
+			this.Load += new System.EventHandler(this.Form1_Load);
 			((System.ComponentModel.ISupportInitialize)(this.fileDataGrid)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();

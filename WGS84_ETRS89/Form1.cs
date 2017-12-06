@@ -11,6 +11,7 @@ namespace WGS84_ETRS89
 		bool paramsLoaded = false;
 		bool dataLoaded = false;
 		public TranslationObject TranslationObject { get; set; }
+
 		public Form1()
 		{
 			Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-GB");
@@ -51,7 +52,7 @@ namespace WGS84_ETRS89
 			dataLoaded = true;
 			exportToFileDirectoryTextBox.Enabled = true;
 			browseExportFolder.Enabled = true;
-			Enabled = true; // Whole form
+			this.Enabled = true; // Whole form
 		}
 		private void loadParamsButton_Click_1(object sender, EventArgs e)
 		{
@@ -63,7 +64,6 @@ namespace WGS84_ETRS89
 			paramsLoaded = true;
 			if (File.Exists(dataFilePathTextBox.Text)) loadDataButton.Enabled = true;
 		}
-
 		private void fValueTextBox_TextChanged(object sender, EventArgs e)
 		{
 			dataFilePathTextBox_TextChanged(sender, e);
@@ -75,7 +75,6 @@ namespace WGS84_ETRS89
 				DataAndParamsUnloaded();
 			}
 		}
-
 		private void aValueTextBox_TextChanged(object sender, EventArgs e)
 		{
 			dataFilePathTextBox_TextChanged(sender, e);
@@ -97,20 +96,18 @@ namespace WGS84_ETRS89
 			if (File.Exists(paramsFilePathTextBox.Text)) loadParamsButton.Enabled = true;
 			else loadParamsButton.Enabled = false;
 		}
-
 		private void exportToFileDirectoryTextBox_TextChanged(object sender, EventArgs e)
 		{
 			if (Directory.Exists(exportToFileDirectoryTextBox.Text) && dataLoaded)
 				exportToFileButton.Enabled = true;
 			else exportToFileButton.Enabled = false;
 		}
-
 		private void browseExportFolder_Click(object sender, EventArgs e)
 		{
 			if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
 				exportToFileDirectoryTextBox.Text = folderBrowserDialog.SelectedPath;
-		}
 
+		}
 		private void EnableLoadButtons()
 		{
 			dataFilePathTextBox.Enabled = true;
@@ -118,7 +115,6 @@ namespace WGS84_ETRS89
 			browseDataFileButton.Enabled = true;
 			browseParamsFileButton.Enabled = true;
 		}
-
 		private void DisableLoadAndExportButtons()
 		{
 			dataFilePathTextBox.Enabled = false;
@@ -128,16 +124,20 @@ namespace WGS84_ETRS89
 			loadDataButton.Enabled = false;
 			loadParamsButton.Enabled = false;
 		}
-
-		private void DataAndParamsUnloaded() {
+		private void DataAndParamsUnloaded()
+		{
 			dataLoaded = false;
 			paramsLoaded = false;
 			exportToFileDirectoryTextBox_TextChanged(null, null);
 		}
-
 		private void exportToFileButton_Click(object sender, EventArgs e)
 		{
 			TranslationObject.ExportDataToFile(exportToFileDirectoryTextBox.Text);
+		}
+		private void Form1_Load(object sender, EventArgs e)
+		{
+			aValueTextBox.Text = ConfigManager.Default_a;
+			fValueTextBox.Text = ConfigManager.Default_f;
 		}
 	}
 }
