@@ -23,7 +23,7 @@ namespace WGS84_ETRS89
 			else LoadSevenParameters(filePath);
 		}
 		
-		public void CalculateInitialValues(double f)
+		private void CalculateInitialValues(double f)
 		{
 			Data_f = f;
 			Data_e = Calc_e(f);

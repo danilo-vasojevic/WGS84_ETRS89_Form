@@ -88,7 +88,7 @@ namespace WGS84_ETRS89
 				{ 0, 0, 1}
 			});
 		}
-		private static Matrix<double> get_RxMi(double Ex, double Ey, double Ez, double Mi) => 
+		private static Matrix<double> get_RxMi(double Ex, double Ey, double Ez, double Mi) =>
 			R1(Ex)
 				.Multiply(R2(Ey))
 				.Multiply(R3(Ez))
